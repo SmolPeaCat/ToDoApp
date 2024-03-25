@@ -32,7 +32,6 @@
         <!-- Main Todo View -->
         <!-- I could dynamically change this part between the list and the Create page-->
         <Grid Grid.Row="1" Background="LightGreen" Name="BackOfToDos">
-            <Rectangle Fill="Green" Width="400" Height="350"></Rectangle> 
         </Grid>
         
         <!-- Button -->
