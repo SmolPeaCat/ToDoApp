@@ -1,6 +1,7 @@
 using System.Reactive;
 using ReactiveUI;
 using SimpleTodoList.DataModel;
+using SimpleTodoList.ViewModels;
 using SimpleTodoList.Services;
 
 namespace SimpleTodoList.ViewModels;
@@ -17,7 +18,10 @@ public class AddNewToDoViewModel : ViewModelBase
             x => x.Description,
             x => !string.IsNullOrWhiteSpace(x));
         AddCommand = ReactiveCommand.Create(
-            () => new ToDoItem { Description = Description }, isValidObservable);
+            () => new ToDoItem
+            {
+                Description = Description,
+            }, isValidObservable);
         CancelCommand = ReactiveCommand.Create(() => { });
     }
 

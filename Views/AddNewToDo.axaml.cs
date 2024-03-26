@@ -10,6 +10,7 @@ public partial class AddNewToDo : Window
     public AddNewToDo()
     {
         InitializeComponent();
+        
     }
 
 }

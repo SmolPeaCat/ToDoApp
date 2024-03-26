@@ -1,6 +1,9 @@
 ﻿using System.Reactive.Linq;
 using ReactiveUI;
 using System;
+using System.Diagnostics;
+using System.Reactive;
+using System.Windows.Input;
 using SimpleTodoList.DataModel;
 using SimpleTodoList.Services;
 using SimpleTodoList.Views;
@@ -10,15 +13,19 @@ namespace SimpleTodoList.ViewModels;
 public class MainWindowViewModel : ViewModelBase
 {
     private ViewModelBase _contentViewModel;
-    private AddNewToDoViewModel _addNewTodoViewModel;
+    public ToDoListViewModel SimpleList { get; set; }
+    private AddNewToDoViewModel AddNewTodoViewModel { get; }
+    public ReactiveCommand<ToDoItem,Unit> DeleteToDoCommand { get; }
+   
+    
     public MainWindowViewModel()
     {
         var service = new ToDoListServices();
-        SimpleToDoList = new ToDoListViewModel(service.GetItems());
-        _contentViewModel = SimpleToDoList;
-        _addNewTodoViewModel = new AddNewToDoViewModel();
+        SimpleList = new ToDoListViewModel(service.GetItems()); // adds the mockup data
+        _contentViewModel = SimpleList;
+        AddNewTodoViewModel = new AddNewToDoViewModel();
+        DeleteToDoCommand = ReactiveCommand.Create<ToDoItem>(parameter => DeleteTodo(parameter));
     }
-    public ToDoListViewModel SimpleToDoList { get; }
 
     public ViewModelBase ContentViewModel
     {
@@ -26,18 +33,14 @@ public class MainWindowViewModel : ViewModelBase
         private set => this.RaiseAndSetIfChanged(ref _contentViewModel, value);
     }
 
-    public AddNewToDoViewModel AddNewTodoViewModel
-    {
-        get => _addNewTodoViewModel;
-    }
     public void NewToDo()
     { 
-        // Create a new window
+        // Creates a new window
         var windowTracker = WindowTracker.Instance;
         var numWindows = windowTracker.GetWindowsCount();
         Console.WriteLine(numWindows);
         
-        if (numWindows > 1) return; // limit the number of windows
+        if (numWindows > 1) return; // limit the number of windows to 2
         
         var addNewTodoWindow = new AddNewToDo
         {
@@ -47,15 +50,21 @@ public class MainWindowViewModel : ViewModelBase
         windowTracker.RegisterWindow();
 
         AddNewTodoViewModel.AddCommand.Merge(AddNewTodoViewModel.CancelCommand.Select(_ => (ToDoItem?)null))
-            .Take(1)
-            .Subscribe(newItem =>
+            .Take(1) // Only takes the first call
+            .Subscribe(newItem => 
+                // if the new Item is null it means that cancel was clicked
             {
                 if (newItem != null)
                 {
-                    SimpleToDoList.ListItems.Add(newItem);
+                    SimpleList.ListItems.Add(newItem);
                 }
                 addNewTodoWindow.Close();
                 windowTracker.UnRegisterWindow();
             });
+    }
+
+    private void DeleteTodo(ToDoItem toDoItem)
+    {
+        SimpleList.ListItems.Remove(toDoItem);
     }
 }

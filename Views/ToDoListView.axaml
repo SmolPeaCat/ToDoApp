@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:SimpleTodoList.ViewModels"
+             xmlns:dataModel="clr-namespace:SimpleTodoList.DataModel"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
              x:Class="SimpleTodoList.Views.ToDoListView"
              x:DataType="vm:ToDoListViewModel">
@@ -26,21 +27,24 @@
                 <ItemsControl ItemsSource="{Binding ListItems}" >
                     <ItemsControl.ItemTemplate>
                         <DataTemplate >
-                                <Border Background="Transparent" Margin="5" > 
-                                    <Grid ColumnDefinitions="Auto,*,*" HorizontalAlignment="Center">
-                                        <Label Grid.Column="0" 
+                            <Border Background="Transparent" Margin="5" >
+                                 <Grid ColumnDefinitions="Auto,*,*" HorizontalAlignment="Center">
+                                     <Label Grid.Column="0" 
                                             Margin="5,5,0,0"
                                             FontSize="15"
                                             Content="{Binding Description}">
-                                        </Label>
-                                        <Button 
-                                            Grid.Column="1" 
-                                            Margin="10,0,5,0"
-                                            x:CompileBindings="False">
-                                            Done
-                                        </Button>
-                                    </Grid>
-                                </Border>
+                                     </Label>
+                                     <Button 
+                                         Grid.Column="1"
+                                         Margin="10,0,5,0"
+                                         x:CompileBindings="False"
+                                         Command="{Binding $parent[Window].DataContext.DeleteToDoCommand}"
+                                         CommandParameter="{Binding .}">
+                                         
+                                         Done
+                                     </Button>
+                                 </Grid>
+                            </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
