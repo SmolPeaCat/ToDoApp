@@ -3,47 +3,11 @@
         xmlns:vm="using:SimpleTodoList.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="500"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
         x:Class="SimpleTodoList.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        ExtendClientAreaToDecorationsHint="True"
-        ExtendClientAreaChromeHints="NoChrome"
-        ExtendClientAreaTitleBarHeightHint="-1"
+        Content="{Binding ContentViewModel}"
         Icon="/Assets/avalonia-logo.ico"
-        Title="SimpleTodoList">
-
-    <Design.DataContext>
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
+        Title="SimpleToDoList">
     
-    <Grid RowDefinitions="Auto, *, Auto">
-        <!-- Title Bar -->
-        <Grid Grid.Row="0" Background="LightCoral" Height="50">
-            <Label 
-                VerticalContentAlignment="Center" 
-                HorizontalContentAlignment="Center" 
-                FontSize="24">
-                Todo App !!!
-            </Label>
-            <!-- I want to put an Image right there -->
-            <Image></Image>
-        </Grid>
-        
-        <!-- Main Todo View -->
-        <!-- I could dynamically change this part between the list and the Create page-->
-        <Grid Grid.Row="1" Background="LightGreen" Name="BackOfToDos">
-        </Grid>
-        
-        <!-- Button -->
-        <Grid Grid.Row="2" Background="LightSkyBlue" Height="50" >
-            <!-- Add an other image here -->
-            <Image></Image>
-            <Button 
-                VerticalAlignment="Center" 
-                HorizontalAlignment="Center">
-                Create new Note
-            </Button>
-        </Grid>
-        
-    </Grid>
 </Window>

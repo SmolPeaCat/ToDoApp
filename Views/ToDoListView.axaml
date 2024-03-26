@@ -2,7 +2,65 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="SimpleTodoList.Views.ToDoListView">
-    Welcome to Avalonia!
+             xmlns:vm="using:SimpleTodoList.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
+             x:Class="SimpleTodoList.Views.ToDoListView"
+             x:DataType="vm:ToDoListViewModel">
+                
+    <Grid RowDefinitions="Auto, *, Auto" Name="BackOfToDos">
+        <!-- Title Bar -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Height="50" Margin="5">
+            <Image Grid.Column="0"></Image>
+            <Label Grid.Column="1"
+                VerticalContentAlignment="Center" 
+                HorizontalContentAlignment="Center" 
+                FontSize="24"
+                Foreground="Black">
+                Simple Todo App 
+            </Label>
+            <!-- I want to put an Image right there -->
+        </Grid>
+        <!-- Main View -->
+        <Grid Grid.Row="1" RowDefinitions="Auto" Margin="10,5,10,5" Opacity="400">
+            <!-- This is how each entry is going to look like -->
+            <StackPanel>
+                <ItemsControl ItemsSource="{Binding ListItems}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                                <Grid ColumnDefinitions="*,*,*" HorizontalAlignment="Center">
+                                    <Label Grid.Column="0" 
+                                            Margin="5,5,0,0"
+                                            FontSize="15"
+                                            Content="{Binding Description}">
+                                    </Label>
+                                    <Button Grid.Column="1" Margin="10,0,5,0">Done</Button>
+                                    <Button Grid.Column="2" Margin="10,0,5,0">Delete</Button>
+                                </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+        <!-- Button -->
+        <Grid Grid.Row="2"  Margin="5">
+            <!-- Add an other image here -->
+            <Image></Image>
+            <Border
+                Background="LightBlue"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center"
+                CornerRadius="50"
+                >
+                <Button
+                    CornerRadius="50"
+                    Background="LightBlue"
+                    BorderBrush="Gray" BorderThickness="2">
+                    <Label 
+                        FontSize="18"
+                        Foreground="Black">Create new Todo</Label>
+                </Button>
+            </Border>
+        </Grid>
+        
+    </Grid>
 </UserControl>
