@@ -20,7 +20,7 @@
         <NativeMenu>
           <NativeMenuItem Header="Settings">
               <NativeMenu>
-                <NativeMenuItem Header="Add New Note" Command=""/>
+                <NativeMenuItem Header="Add New Note"/>
                 <NativeMenuItem Header="Show all Notes"/>
                 <NativeMenuItem Header="Clear all Notes"/>
               </NativeMenu>

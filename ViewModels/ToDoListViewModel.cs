@@ -6,14 +6,9 @@ using SimpleTodoList.DataModel;
 
 namespace SimpleTodoList.ViewModels;
 
-public class ToDoListViewModel : ViewModelBase
+public class ToDoListViewModel(IEnumerable<ToDoItem> items) : ViewModelBase
 {
-    public ToDoListViewModel(IEnumerable<ToDoItem> items)
-    {
-        ListItems = new ObservableCollection<ToDoItem>(items);
-    }
-
-    public ObservableCollection<ToDoItem> ListItems { get; }
+    public ObservableCollection<ToDoItem> ListItems { get; } = new ObservableCollection<ToDoItem>(items);
 
     public ReactiveCommand<Unit, ToDoItem> DoneCommand { get; }
 

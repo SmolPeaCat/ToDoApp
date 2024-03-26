@@ -6,6 +6,8 @@
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
         x:Class="SimpleTodoList.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
         Content="{Binding ContentViewModel}"
         MaxWidth="500" MaxHeight="400"
         MinWidth="500" MinHeight="400"

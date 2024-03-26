@@ -5,24 +5,28 @@
         xmlns:vm="using:SimpleTodoList.ViewModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="SimpleTodoList.Views.AddNewToDo"
+        x:DataType="vm:AddNewToDoViewModel"
         Title="AddNewToDo"
         MaxWidth="300" MaxHeight="300"
         MinWidth="300" MinHeight="300"
-        WindowStartupLocation="CenterScreen"
-        x:DataType="vm:AddNewToDoViewModel">
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen">
     
     <Grid RowDefinitions="*,*,*">
         <Border Grid.Row="0" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">
-            <Label>WASSUP ???</Label>
+            <Label>New ToDO !</Label>
         </Border>
         <TextBox 
             Grid.Row="1"
-            Margin="5">
-            I want to do this
+            Margin="5"
+            AcceptsReturn="True"
+            Text="{Binding Description}"
+            Watermark="Become happy">
         </TextBox>
         <Grid Grid.Row="2" ColumnDefinitions="Auto,Auto" HorizontalAlignment="Center">
-            <Button Grid.Column="0" Margin="5">Cancel</Button>
-            <Button Grid.Column="1" Margin="5">Add Todo</Button>
+            <Button Grid.Column="0" Margin="5" Command="{Binding CancelCommand}">Cancel</Button>
+            <Button Grid.Column="1" Margin="5" Command="{Binding AddCommand}">Add Todo</Button>
         </Grid>
     </Grid>
 </Window>
