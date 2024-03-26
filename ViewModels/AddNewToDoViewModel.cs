@@ -10,7 +10,6 @@ public class AddNewToDoViewModel : ViewModelBase
     private string _description = string.Empty;
     public ReactiveCommand<Unit, ToDoItem> AddCommand { get; }
     public ReactiveCommand<Unit, Unit> CancelCommand { get; }
-    public WindowTracker WindowTracker;
 
     public AddNewToDoViewModel()
     {

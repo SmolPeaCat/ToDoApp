@@ -6,23 +6,35 @@ namespace SimpleTodoList.Services;
 public class WindowTracker
 /*
  * Helper Class to keep track of the opened Windows
+ * Decided to go with a Singleton pattern since I only need one instance
  */
 {
-    private int _openWindows;
+    private static WindowTracker? _instance;
+    private static int _windowCount = 0;
+    
+    private WindowTracker() {}
+    public static WindowTracker Instance
+    {
+        get
+        {
+            _instance ??= new WindowTracker(); // if right is null create the left 
+            return _instance;
+        }
+    }
     
     public void RegisterWindow()
     {
-        _openWindows++;
+        _windowCount++;
     }
 
-    public void UnRegisterWindow(Window window)
+    public void UnRegisterWindow()
     {
-        _openWindows--;
+        _windowCount--;
     }
 
     public int GetWindowsCount()
     {
-        return _openWindows;
+        return _windowCount;
     }
     
 }

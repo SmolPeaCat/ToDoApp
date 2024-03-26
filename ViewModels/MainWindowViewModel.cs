@@ -33,9 +33,18 @@ public class MainWindowViewModel : ViewModelBase
     public void NewToDo()
     { 
         // Create a new window
-        var addNewTodoWindow = new AddNewToDo();
-        addNewTodoWindow.DataContext = AddNewTodoViewModel;
+        var windowTracker = WindowTracker.Instance;
+        var numWindows = windowTracker.GetWindowsCount();
+        Console.WriteLine(numWindows);
+        
+        if (numWindows > 1) return; // limit the number of windows
+        
+        var addNewTodoWindow = new AddNewToDo
+        {
+            DataContext = AddNewTodoViewModel
+        };
         addNewTodoWindow.Show();
+        windowTracker.RegisterWindow();
 
         AddNewTodoViewModel.AddCommand.Merge(AddNewTodoViewModel.CancelCommand.Select(_ => (ToDoItem?)null))
             .Take(1)
@@ -46,8 +55,7 @@ public class MainWindowViewModel : ViewModelBase
                     SimpleToDoList.ListItems.Add(newItem);
                 }
                 addNewTodoWindow.Close();
-                
+                windowTracker.UnRegisterWindow();
             });
-
     }
 }
