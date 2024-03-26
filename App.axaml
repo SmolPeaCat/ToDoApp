@@ -12,4 +12,23 @@
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
+    <TrayIcon.Icons>
+    <TrayIcons>
+      <TrayIcon Icon="/Assets/avalonia-logo.ico" 
+              ToolTipText="Avalonia Tray Icon ToolTip">
+      <TrayIcon.Menu>
+        <NativeMenu>
+          <NativeMenuItem Header="Settings">
+              <NativeMenu>
+                <NativeMenuItem Header="Add New Note" Command=""/>
+                <NativeMenuItem Header="Show all Notes"/>
+                <NativeMenuItem Header="Clear all Notes"/>
+              </NativeMenu>
+            </NativeMenuItem>
+          </NativeMenu>
+        </TrayIcon.Menu>
+      </TrayIcon>
+    </TrayIcons>
+  </TrayIcon.Icons>
+             
 </Application>
