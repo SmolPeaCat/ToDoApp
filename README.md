@@ -4,19 +4,21 @@ Here is what the App looks like as of version 0.1.
 
 Main window  
 
-![image](../SimpleTodoList/Assets/Extras/todo_app_main.png)  
+![image](https://github.com/SmolPeaCat/ToDoApp/blob/main/Assets/Extras/todo_app_main.png)
 
 Other window  
 
-![image](../SimpleTodoList/Assets/Extras/add_new_todo.png)  
+![image](https://github.com/SmolPeaCat/ToDoApp/blob/main/Assets/Extras/add_new_todo.png)  
 
 The two of them together  
 
-![image](../SimpleTodoList/Assets/Extras/together_forever.png)
+![image](https://github.com/SmolPeaCat/ToDoApp/blob/main/Assets/Extras/together_forever.png)
 
 
 Little Demo:  
--> put Video here here
+
+[Showcase.mp4](https://github.com/SmolPeaCat/ToDoApp/assets/108297253/b62e1841-7ba1-477f-bd13-ea3f34c44424)
+
 
 
 
@@ -28,6 +30,7 @@ TODO:
 What I learned :
 - Mvvm
 - Singleton Pattern
+- Making a simple App is HARD
 
 What I accomplished
 - Creates a new window every time you click on Create Note
