@@ -1,9 +1,7 @@
 ﻿using System.Reactive.Linq;
 using ReactiveUI;
 using System;
-using System.Diagnostics;
 using System.Reactive;
-using System.Windows.Input;
 using SimpleTodoList.DataModel;
 using SimpleTodoList.Services;
 using SimpleTodoList.Views;
@@ -13,10 +11,9 @@ namespace SimpleTodoList.ViewModels;
 public class MainWindowViewModel : ViewModelBase
 {
     private ViewModelBase _contentViewModel;
-    public ToDoListViewModel SimpleList { get; set; }
+    private ToDoListViewModel SimpleList { get;  }
     private AddNewToDoViewModel AddNewTodoViewModel { get; }
-    public ReactiveCommand<ToDoItem,Unit> DeleteToDoCommand { get; }
-   
+    public ReactiveCommand<ToDoItem,Unit> DeleteToDoCommand { get; set; }
     
     public MainWindowViewModel()
     {
@@ -24,7 +21,7 @@ public class MainWindowViewModel : ViewModelBase
         SimpleList = new ToDoListViewModel(service.GetItems()); // adds the mockup data
         _contentViewModel = SimpleList;
         AddNewTodoViewModel = new AddNewToDoViewModel();
-        DeleteToDoCommand = ReactiveCommand.Create<ToDoItem>(parameter => DeleteTodo(parameter));
+        DeleteToDoCommand = ReactiveCommand.Create<ToDoItem>(DeleteTodo);
     }
 
     public ViewModelBase ContentViewModel

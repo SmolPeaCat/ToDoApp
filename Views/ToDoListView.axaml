@@ -40,7 +40,6 @@
                                          x:CompileBindings="False"
                                          Command="{Binding $parent[Window].DataContext.DeleteToDoCommand}"
                                          CommandParameter="{Binding .}">
-                                         
                                          Done
                                      </Button>
                                  </Grid>
@@ -55,13 +54,13 @@
             <!-- Add an other image here -->
             <Image></Image>
             <Border
-                Background="LightBlue"
+                Background="Transparent"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center"
                 CornerRadius="50">
                 <Button
                     CornerRadius="50"
-                    Background="LightBlue"
+                    Background="Transparent"
                     BorderBrush="Gray" BorderThickness="2"
                     x:CompileBindings="False"
                     Command="{Binding $parent[Window].DataContext.NewToDo}">
