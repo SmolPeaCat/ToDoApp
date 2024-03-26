@@ -29,4 +29,8 @@
     <ItemGroup>
       <Compile Remove="Views\AddNewToDoView.axaml.cs" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Assets\Extras\" />
+    </ItemGroup>
 </Project>

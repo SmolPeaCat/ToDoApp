@@ -1,3 +1,25 @@
+# Simple Todo App using Avalonia !
+
+Here is what the App looks like as of version 0.1.  
+
+Main window  
+
+![image](../SimpleTodoList/Assets/Extras/todo_app_main.png)  
+
+Other window  
+
+![image](../SimpleTodoList/Assets/Extras/add_new_todo.png)  
+
+The two of them together  
+
+![image](../SimpleTodoList/Assets/Extras/together_forever.png)
+
+
+Little Demo:  
+-> put Video here here
+
+
+
 TODO:
 - Add Images of my app
 - Add more details and explanation of my app
