@@ -1,4 +1,5 @@
 # Simple Todo App using Avalonia !
+(Normally works on Linux, windows and MacOs)
 
 Here is what the App looks like as of version 0.1.  
 
