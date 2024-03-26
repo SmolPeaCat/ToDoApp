@@ -7,8 +7,8 @@ public class ToDoListServices
 {
     public IEnumerable<ToDoItem> GetItems() => new[]
     {
-        new ToDoItem { Description = "Walk the dragon" },
-        new ToDoItem { Description = "Buy some metal scraps for Fuhr" },
-        new ToDoItem { Description = "Learn to speak Avalonian" },
+        new ToDoItem { Description = "Walk the dragon", Id = 1},
+        new ToDoItem { Description = "Buy some metal scraps for Fuhr", Id = 2},
+        new ToDoItem { Description = "Learn to speak Avalonian", Id = 3},
     };
 }

@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:SimpleTodoList.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="SimpleTodoList.Views.AddNewToDo"
+        Title="AddNewToDo"
+        Width="300" Height="300"
+        WindowStartupLocation="CenterScreen"
+        x:DataType="vm:AddNewToDoViewModel">
+    
+    <Grid RowDefinitions="*,*,*">
+        <Border Grid.Row="0" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">
+            <Label>WASSUP ???</Label>
+        </Border>
+        <TextBox 
+            Grid.Row="1"
+            Margin="5">
+            I want to do this
+        </TextBox>
+        <Grid Grid.Row="2" ColumnDefinitions="Auto,Auto" HorizontalAlignment="Center">
+            <Button Grid.Column="0" Margin="5">Cancel</Button>
+            <Button Grid.Column="1" Margin="5">Add Todo</Button>
+        </Grid>
+    </Grid>
+</Window>

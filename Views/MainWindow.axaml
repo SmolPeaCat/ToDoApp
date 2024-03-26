@@ -7,6 +7,7 @@
         x:Class="SimpleTodoList.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Content="{Binding ContentViewModel}"
+        WindowStartupLocation="CenterOwner"
         Icon="/Assets/avalonia-logo.ico"
         Title="SimpleToDoList">
     
