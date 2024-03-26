@@ -9,13 +9,6 @@ namespace SimpleTodoList.ViewModels;
 public class ToDoListViewModel(IEnumerable<ToDoItem> items) : ViewModelBase
 {
     public ObservableCollection<ToDoItem> ListItems { get; } = new ObservableCollection<ToDoItem>(items);
-
-    public ReactiveCommand<Unit, ToDoItem> DoneCommand { get; }
-
-    public void DeleteItem()
-    {
-    }
-        
 }
 
 

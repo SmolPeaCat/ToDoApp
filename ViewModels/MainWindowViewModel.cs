@@ -46,7 +46,7 @@ public class MainWindowViewModel : ViewModelBase
                     SimpleToDoList.ListItems.Add(newItem);
                 }
                 addNewTodoWindow.Close();
-                addNewTodoWindow.Description
+                
             });
 
     }

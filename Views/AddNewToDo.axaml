@@ -20,13 +20,12 @@
         <TextBox 
             Grid.Row="1"
             Margin="5"
-            AcceptsReturn="True"
             Text="{Binding Description}"
             Watermark="Become happy">
         </TextBox>
         <Grid Grid.Row="2" ColumnDefinitions="Auto,Auto" HorizontalAlignment="Center">
-            <Button Grid.Column="0" Margin="5" Command="{Binding CancelCommand}">Cancel</Button>
-            <Button Grid.Column="1" Margin="5" Command="{Binding AddCommand}">Add Todo</Button>
+            <Button Grid.Column="0" Margin="5" Command="{Binding CancelCommand}" HotKey="Escape">Cancel</Button>
+            <Button Grid.Column="1" Margin="5" Command="{Binding AddCommand}" HotKey="Enter">Add Todo</Button>
         </Grid>
     </Grid>
 </Window>

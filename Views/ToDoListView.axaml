@@ -14,8 +14,7 @@
             <Label Grid.Column="1"
                 VerticalContentAlignment="Center" 
                 HorizontalContentAlignment="Center" 
-                FontSize="24"
-                Foreground="Black">
+                FontSize="24">
                 Simple Todo App 
             </Label>
             <!-- I want to put an Image right there -->
@@ -27,19 +26,21 @@
                 <ItemsControl ItemsSource="{Binding ListItems}" >
                     <ItemsControl.ItemTemplate>
                         <DataTemplate >
-                                <Grid ColumnDefinitions="Auto,*,*" HorizontalAlignment="Center">
-                                    <Label Grid.Column="0" 
-                                           Margin="5,5,0,0"
-                                           FontSize="15"
-                                           Content="{Binding Description}">
-                                    </Label>
-                                    <Button 
-                                        Grid.Column="1" 
-                                        Margin="10,0,5,0"
-                                        x:CompileBindings="False">
-                                        Done
-                                    </Button>
-                                </Grid>
+                                <Border Background="Transparent" Margin="5" > 
+                                    <Grid ColumnDefinitions="Auto,*,*" HorizontalAlignment="Center">
+                                        <Label Grid.Column="0" 
+                                            Margin="5,5,0,0"
+                                            FontSize="15"
+                                            Content="{Binding Description}">
+                                        </Label>
+                                        <Button 
+                                            Grid.Column="1" 
+                                            Margin="10,0,5,0"
+                                            x:CompileBindings="False">
+                                            Done
+                                        </Button>
+                                    </Grid>
+                                </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -53,17 +54,15 @@
                 Background="LightBlue"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center"
-                CornerRadius="50"
-                >
+                CornerRadius="50">
                 <Button
                     CornerRadius="50"
                     Background="LightBlue"
                     BorderBrush="Gray" BorderThickness="2"
                     x:CompileBindings="False"
                     Command="{Binding $parent[Window].DataContext.NewToDo}">
-                    <Label 
-                        FontSize="18"
-                        Foreground="Black">Create new Todo</Label>
+                    <Label
+                        FontSize="18">Create new Todo</Label>
                 </Button>
             </Border>
         </Grid>
