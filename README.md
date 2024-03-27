@@ -3,7 +3,7 @@
 
 Here is what the App looks like as of version 0.1.  
 
-Main window  
+Main window
 
 ![image](https://github.com/SmolPeaCat/ToDoApp/blob/main/Assets/Extras/todo_app_main.png)
 

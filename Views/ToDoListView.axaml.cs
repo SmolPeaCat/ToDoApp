@@ -16,7 +16,7 @@ public partial class ToDoListView : UserControl
     private void MakeItBeautiful()
     {
         var gradientBrush = new LinearGradientBrush();
-        gradientBrush.GradientStops.Add(new GradientStop(Colors.Red, 0.0));
+        gradientBrush.GradientStops.Add(new GradientStop(Colors.Red, 0.3));
         gradientBrush.GradientStops.Add(new GradientStop(Colors.Blue, 1.0));
         gradientBrush.Opacity = 100.0;
         BackOfToDos.Background = gradientBrush;
