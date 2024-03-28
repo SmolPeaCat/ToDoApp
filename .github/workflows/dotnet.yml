@@ -51,19 +51,25 @@ jobs:
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
-      - name: Archive linux and windows folders
-        uses: thedoctor0/zip-release@0.7.5
         with:
-          filename: release.zip
+          name: ${{ needs.publish-Linux-Windows.outputs.artifacts }}
+      - name: Archive linux and windows folders
+        run: |
+          artifact_paths=${{ needs.publish-Linux-Windows.outputs.artifacts }}
+          for path in $artifact_paths; do
+            filename=$(basename "$path")  # Extract filename from path
+            zip -r "$filename.zip" "$path"
+          done
       - name: Generate Changelog
         run: |
             tail -n +2 <<< "${{ github.event.head_commit.message }}" >  ${{ github.workspace }}-CHANGELOG.txt
       - name: Print changelog haha
-        run: echo ${{ github.workspace }}-CHANGELOG.txt
+        run: cat ${{ github.workspace }}-CHANGELOG.txt
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           body_path: ${{ github.workspace }}-CHANGELOG.txt
-          # note you'll typically need to create a personal access token
-          # with permissions to create releases in the other repo
-          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          tag_name: "New Release"
+          files: |
+            simple-todo-linux-x64.zip
+            simple-todo-windows-x64.zip
