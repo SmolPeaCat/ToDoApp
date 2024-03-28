@@ -59,4 +59,9 @@ jobs:
         uses: montudor/action-zip@v1
         with:
           args: zip -qq -r simple-todo-linux-x64.zip simple-todo-linux-x64
-      
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+           simple-todo-windows-x64.zip 
+           simple-todo-linux-x64.zip 
