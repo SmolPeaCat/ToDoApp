@@ -8,8 +8,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
+  build-test-publish-Linux-Windows:
+    runs-on: [ubuntu-latest,windows-latest]
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET Core
@@ -30,6 +30,12 @@ jobs:
         name: simple-todo-linux-x64
         path: .linux-output/
         retention-days: 14
-      #if: ${{ startsWith(github.event.message, 'Publish version') }}
-    - name: Print the event message
-      run: echo ${{ github.event.message }}
+        
+    - name : Publish for Windows
+      run: dotnet publish -c Release -r win-x64 --self-contained -o .windows-output/
+    - name: Upload simple-todo-win-x64 directory
+      uses: actions/upload-artifact@v4
+      with:
+        name: simple-todo-windows-x64
+        path: .windows-output/
+        retention-days: 14
