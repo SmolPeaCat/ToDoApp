@@ -44,7 +44,7 @@ jobs:
         name: simple-todo-windows-x64
         path: ./release/windows-output/
         
-  release-project:
+  package-release:
     name: Release project
     runs-on: ubuntu-latest
     needs: publish-Linux-Windows
@@ -55,9 +55,8 @@ jobs:
         uses: montudor/action-zip@v1
         with:
           args: zip -qq -r simple-todo-windows-x64.zip simple-todo-windows-x64
-          working-directory: /home/runner/work/ToDoApp/ToDoApp/simple-todo-linux-x64
       - name: Archive linux
         uses: montudor/action-zip@v1
         with:
           args: zip -qq -r simple-todo-linux-x64.zip simple-todo-linux-x64
-          working-directory: /home/runner/work/ToDoApp/ToDoApp/simple-todo-windows-x64
+      
