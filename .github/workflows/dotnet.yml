@@ -62,6 +62,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: "New release"
           files: |
            simple-todo-windows-x64.zip 
            simple-todo-linux-x64.zip 
