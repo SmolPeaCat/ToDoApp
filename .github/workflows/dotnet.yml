@@ -18,7 +18,16 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name : Build .net Avalonia
-      run: dotnet build --configuration Release
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      
+    - name : Build and Test
+      run: dotnet build --configuration Release && dotnet test --no-build --verbosity normal
+      
+    - name : Publish for Linux
+      run: dotnet publish -c Release -r linux-x64 --self-contained -o .linux-output
+    - name: Upload simple-todo-linux-x64 directory
+      uses: actions/upload-artifact@v4
+      with:
+        name: simple-todo-linux-x64
+        path: .linux-output/
+        retention-days: 14
+      if: ${{ startsWith(github.event.message, 'Publish version') }}
