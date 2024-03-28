@@ -6,9 +6,6 @@ name: Build and Test
 on:
   push:
     branches: [ "main" ]
-    tags:
-      - '*' 
-    
 
 jobs:
   build-test:
@@ -63,9 +60,12 @@ jobs:
         with:
           args: zip -qq -r simple-todo-linux-x64.zip simple-todo-linux-x64
       - name: Release
-        uses: softprops/action-gh-release@v2
+        #uses: softprops/action-gh-release@v2
+        #with:
+          #tag_name: New release
+          #files: |
+           #simple-todo-windows-x64.zip 
+           #simple-todo-linux-x64.zip 
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: New release
-          files: |
-           simple-todo-windows-x64.zip 
-           simple-todo-linux-x64.zip 
+          artifacts: "*/*.zip"
