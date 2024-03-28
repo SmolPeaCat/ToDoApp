@@ -24,7 +24,7 @@ jobs:
         
   publish-Linux-Windows:
     runs-on : ubuntu-latest
-    if:  ${{ startsWith(github.event.head_commit.message,'Publish new version') }}
+    #if:  ${{ startsWith(github.event.head_commit.message,'Publish new version') }}
     needs: build-test
     steps:
     - uses: actions/checkout@v4
@@ -57,7 +57,6 @@ jobs:
           filename: release.zip
       - name: Generate Changelog
         run: |
-            git log --since=HEAD@{tag} --pretty=format:"* %s" | 
-            grep -E '^feat:.*|^fix:.*|^improvement:.*' > ${{ github.workspace }}/CHANGELOG.txt
+            tail -n +2 <<< "${{ github.event.head_commit.message }}" > release_notes.txt 
       - name: Print changelog haha
-        run: echo ${{ github.workspace }}/CHANGELOG.txt
+        run: echo release_notes.txt
