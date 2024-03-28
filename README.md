@@ -1,4 +1,4 @@
-# Simple Todo App using Avalonia !
+[![Build and Test](https://github.com/SmolPeaCat/ToDoApp/actions/workflows/dotnet.yml/badge.svg)](https://github.com/SmolPeaCat/ToDoApp/actions/workflows/dotnet.yml)# Simple Todo App using Avalonia !
 (Normally works on Linux, windows and MacOs)
 
 Here is what the App looks like as of version 0.1.  
