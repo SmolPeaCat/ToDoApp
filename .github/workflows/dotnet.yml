@@ -60,5 +60,5 @@ jobs:
         run: |
             git log --since=HEAD@{tag} --pretty=format:"* %s" | 
             grep -E '^feat:.*|^fix:.*|^improvement:.*' > ${{ github.workspace }}/CHANGELOG.txt
-      - name: Print changelog
+      - name: Print changelog haha
         run: echo ${{ github.workspace }}/CHANGELOG.txt
