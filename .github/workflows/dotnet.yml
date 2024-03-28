@@ -51,8 +51,13 @@ jobs:
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
+      - name: Archive Window
+        uses: montudor/action-zip@v1
         with:
-          name: ${{ needs.publish-Linux-Windows.outputs.artifacts }}
-      - name: Archive linux and windows folders
-        run: 
-          echo ${{ needs.publish-Linux-Windows.outputs.artifacts }}
+          args: zip -qq -r simple-todo-windows-x64.zip simple-todo-windows-x64
+          working-directory: /home/runner/work/ToDoApp/ToDoApp/simple-todo-linux-x64
+      - name: Archive linux
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r simple-todo-linux-x64.zip simple-todo-linux-x64
+          working-directory: /home/runner/work/ToDoApp/ToDoApp/simple-todo-windows-x64
