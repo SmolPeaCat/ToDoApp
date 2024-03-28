@@ -56,3 +56,9 @@ jobs:
         uses: thedoctor0/zip-release@0.7.5
         with:
           filename: release.zip
+      - name: Generate Changelog
+        run: |
+            git log --since=HEAD@{tag} --pretty=format:"* %s" | 
+            grep -E '^feat:.*|^fix:.*|^improvement:.*' > ${{ github.workspace }}/CHANGELOG.txt
+      - name: Print changelog
+        run: echo ${{ github.workspace }}/CHANGELOG.txt
