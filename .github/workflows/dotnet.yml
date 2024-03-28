@@ -23,7 +23,7 @@ jobs:
       run: dotnet build --configuration Release && dotnet test --no-build --verbosity normal
       
     - name : Publish for Linux
-      run: dotnet publish -c Release -r linux-x64 --self-contained -o .linux-output
+      run: dotnet publish -c Release -r linux-x64 --self-contained -o .linux-output/
     - name: Upload simple-todo-linux-x64 directory
       uses: actions/upload-artifact@v4
       with:
