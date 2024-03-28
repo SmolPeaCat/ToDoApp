@@ -25,7 +25,7 @@ jobs:
         
   publish-Linux-Windows:
     runs-on : ubuntu-latest
-    if:  ${{ startWith(github.event.head_commit.message,'Publish new version') }}
+    if:  ${{ startsWith(github.event.head_commit.message,'Publish new version') }}
     needs: build-test
     steps:
     - uses: actions/checkout@v4
