@@ -23,19 +23,29 @@ jobs:
       run: dotnet build --configuration Release && dotnet test --no-build --verbosity normal
       
     - name : Publish for Linux
-      run: dotnet publish -c Release -r linux-x64 --self-contained -o .linux-output/
+      run: dotnet publish -c Release -r linux-x64 --self-contained -o ./release/linux-output/
     - name: Upload simple-todo-linux-x64 directory
       uses: actions/upload-artifact@v4
       with:
         name: simple-todo-linux-x64
-        path: .linux-output/
-        retention-days: 14
+        path: ./release/linux-output/
         
     - name : Publish for Windows
-      run: dotnet publish -c Release -r win-x64 --self-contained -o .windows-output/
+      run: dotnet publish -c Release -r win-x64 --self-contained -o ./release/windows-output/
     - name: Upload simple-todo-win-x64 directory
       uses: actions/upload-artifact@v4
       with:
         name: simple-todo-windows-x64
-        path: .windows-output/
-        retention-days: 14
+        path: ./release/windows-output/
+  release-project:
+    name: Release project
+    runs-on: ubuntu-latest
+    needs: build-test-publish-Linux-Windows
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: release-files
+      - name:  Display structure of downloaded files
+        run: ls -R .release/
+          
