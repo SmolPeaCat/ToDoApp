@@ -65,9 +65,7 @@ jobs:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
           prerelease: false
-          title: "Development Build"
           files: |
             simple-todo-windows-x64.zip 
             simple-todo-linux-x64.zip
