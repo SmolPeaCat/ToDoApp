@@ -57,6 +57,13 @@ jobs:
           filename: release.zip
       - name: Generate Changelog
         run: |
-            tail -n +2 <<< "${{ github.event.head_commit.message }}" > release_notes.txt 
+            tail -n +2 <<< "${{ github.event.head_commit.message }}" >  ${{ github.workspace }}-CHANGELOG.txt
       - name: Print changelog haha
-        run: cat release_notes.txt
+        run: echo ${{ github.workspace }}-CHANGELOG.txt
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: ${{ github.workspace }}-CHANGELOG.txt
+          # note you'll typically need to create a personal access token
+          # with permissions to create releases in the other repo
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
