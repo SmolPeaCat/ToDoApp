@@ -52,8 +52,6 @@ jobs:
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
-      #- name:  Display structure of downloaded files
-      # run: ls -R 
       - name: Archive linux and windows folders
         uses: thedoctor0/zip-release@0.7.5
         with:
