@@ -25,6 +25,7 @@ jobs:
         
   publish-Linux-Windows:
     runs-on : ubuntu-latest
+    if:  ${{ startWitch(github.event.head_commit.message,'Publish new version') }}
     needs: build-test
     steps:
     - uses: actions/checkout@v4
