@@ -30,4 +30,4 @@ jobs:
         name: simple-todo-linux-x64
         path: .linux-output/
         retention-days: 14
-      if: ${{ startsWith(github.event.message, 'Publish version') }}
+      #if: ${{ startsWith(github.event.message, 'Publish version') }}
