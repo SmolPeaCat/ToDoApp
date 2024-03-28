@@ -11,6 +11,7 @@ jobs:
   build-test-publish-Linux-Windows:
     runs-on: ubuntu-latest
     steps:
+    - run: $ echo {{ github.event_name }}
     - uses: actions/checkout@v4
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v4
