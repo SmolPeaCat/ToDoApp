@@ -31,4 +31,5 @@ jobs:
         path: .linux-output/
         retention-days: 14
       #if: ${{ startsWith(github.event.message, 'Publish version') }}
+    - name: Print the event message
       run: Print ${{ github.event.message }}
