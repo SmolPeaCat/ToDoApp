@@ -59,4 +59,4 @@ jobs:
         run: |
             tail -n +2 <<< "${{ github.event.head_commit.message }}" > release_notes.txt 
       - name: Print changelog haha
-        run: echo release_notes.txt
+        run: cat release_notes.txt
